@@ -1,0 +1,17 @@
+plugins {
+    id 'groovy'
+}
+
+group 'com.example.getsaxofinancial'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'org.codehaus.groovy:groovy-all:2.5.8'
+    compile 'org.jsoup:jsoup:1.12.1'
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-2"
+}
