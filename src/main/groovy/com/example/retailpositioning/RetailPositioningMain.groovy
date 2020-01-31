@@ -1,5 +1,6 @@
 package com.example.retailpositioning
 
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class RetailPositioningMain {
@@ -8,6 +9,11 @@ class RetailPositioningMain {
      */
     static void retailPositioningMain() {
         def responseHtml = new URL("https://fxowebtools.saxobank.com/retail.html").getText()
+
+        new File("result/html/" + ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HHmm")) + ".html").withWriterAppend { writer ->
+            writer.write(responseHtml)
+        }
+
         def retailPositioning = new RetailPositioning(responseHtml)
         def reportedDate = retailPositioning.blogTitleDate.blogTitleDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HHmm"))
 
