@@ -52,4 +52,12 @@ class RetailPositionRatio {
         this.longPut = elm.select("td.rightPositionCells").text().replaceAll("\\(.+?\\)|%", "") as int
         this.longPutDifference = (elm.select("td.rightPositionCells").text() =~ /(?<=\().*?(?=%\))/)[0] as int
     }
+
+    /**
+     * CSVに書き込むための文字列を作る
+     * @return フィールドをカンマで区切って1行にして最後に改行を付加した文字列
+     */
+    String toCsvLine() {
+        this.currencyPair.toString() + "," + this.longCallWidth + "," + this.longCall + "," + this.longCallDifference + "," + this.longPutWidth + "," + this.longPut + "," + this.longPutDifference + System.properties['line.separator']
+    }
 }

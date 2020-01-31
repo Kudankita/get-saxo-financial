@@ -34,4 +34,12 @@ class FxOptionBoardPrice {
         this.callSellAt = elm.select("td.price td")[2].text() as double
         this.callBuyAt = elm.select("td.price td")[3].text() as double
     }
+
+    /**
+     * CSVに書き込むための文字列を作る
+     * @return フィールドをカンマで区切って1行にして最後に改行を付加した文字列
+     */
+    String toCsvLine() {
+        this.currencyPair.toString() + "," + this.expiryDate.toString() + "," + this.putSellAt + "," + this.putBuyAt + "," + this.strike + "," + this.callSellAt + "," + this.callBuyAt + System.properties['line.separator']
+    }
 }
