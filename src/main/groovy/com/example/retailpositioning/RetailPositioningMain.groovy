@@ -17,7 +17,13 @@ class RetailPositioningMain {
         def retailPositioning = new RetailPositioning(responseHtml)
         def reportedDate = retailPositioning.blogTitleDate.blogTitleDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HHmm"))
 
-        new File("result/retailPositionRatio/" + reportedDate + ".csv").withWriterAppend { writer ->
+        def retailPositionRatioFile = new File("result/retailPositionRatio/" + reportedDate + ".csv")
+        if (retailPositionRatioFile.exists()) {
+            println("${reportedDate}のファイルはすでに存在します")
+            return
+        }
+
+        retailPositionRatioFile.withWriterAppend { writer ->
             retailPositioning.retailPositionRatios.each {
                 writer.write(it.toCsvLine())
             }
