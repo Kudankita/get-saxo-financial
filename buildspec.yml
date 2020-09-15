@@ -6,7 +6,7 @@ phases:
       java: corretto8
   build:
     commands:
-      - bash ./gradlew check
+      - bash ./gradlew check jacocoTestReport
 
 reports:
   test-report:
