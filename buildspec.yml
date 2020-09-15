@@ -14,5 +14,5 @@ reports:
       - build/test-results/**/*.xml
   test-report2:
     files:
-      - build/jacoco/**/*.exec
+      - build/reports/jacoco/test/*.xml
     file-format: JaCoCoXml
