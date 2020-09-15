@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+  build:
+    commands:
+      - bash ./gradlew check
+
+reports:
+  test-report:
+    files:
+      - build/test-results/**/*.xml
+      - build/jacoco/**/*.exec
