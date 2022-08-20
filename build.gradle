@@ -12,9 +12,9 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.5.8'
-    compile 'org.jsoup:jsoup:1.12.1'
-    testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-2"
+    implementation 'org.apache.groovy:groovy:4.0.4'
+    implementation 'org.jsoup:jsoup:1.15.2'
+    testImplementation "org.spockframework:spock-core:2.2-M3-groovy-4.0"
 }
 
 application {
@@ -27,8 +27,9 @@ jar {
     }
 
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+    duplicatesStrategy "exclude"
 }
 
 jacocoTestReport {
